@@ -1,6 +1,10 @@
 function modifyInstructorDivs() {
     const instructorDivs = document.querySelectorAll('[title="Instructor(s)"]');
 
+    if (instructorDivs.length === 0){
+        return;
+    }
+    
     instructorDivs.forEach((prevElement) => {
         var profName = prevElement.innerText;
         if(profName==="Staff"){
@@ -24,10 +28,16 @@ function modifyInstructorDivs() {
 
 function modifyCourseDivs() {
     const courseDivs = document.querySelectorAll('.course_title');
-    const termInfo = document.querySelector('[title="Change term"]').innerText.split(" ");
+    
+    if (courseDivs.length===0){
+        return;
+    }
 
-    const year = termInfo[0];
-    const term = termInfo[1];
+    const termInfo = document.querySelector('[title="Change term"]')
+    const termInfoList = termInfo.innerText.split(" ");
+
+    const year = termInfoList[0];
+    const term = termInfoList[1];
 
     let termMap = new Map([
         ["Fall", "f"],
