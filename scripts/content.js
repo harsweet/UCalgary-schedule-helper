@@ -14,6 +14,8 @@ let interval = setInterval(function() {
         anchorElement.href = rateMyProfURL;
 
         anchorElement.innerHTML = prevElement.innerHTML;
+        anchorElement.setAttribute("target", "_blank");
+        
         prevElement.innerText = '';
         prevElement.appendChild(anchorElement);
     }); 
