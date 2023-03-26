@@ -67,9 +67,37 @@ function modifyCourseDivs() {
     });
 }
 
+function modifyAddressDivs() {
+    const addressDivs = document.querySelectorAll('[title="Building and Room Number"]');
+
+    if (addressDivs.length === 0){
+        return;
+    }
+    
+    addressDivs.forEach((prevElement) => {
+        var addressInfo = prevElement.innerText;
+        if(addressInfo.includes("OFF-SITE") || addressInfo.includes("WEB-BASED")){
+            return;
+        }
+
+        const searchTerm = addressInfo.replace(" ", "+");
+        var mapsURL = "https://www.google.com/maps/search/" + searchTerm + ',+University+of+Calgary';
+        
+        const anchorElement = document.createElement('a');
+        anchorElement.href = mapsURL;
+
+        anchorElement.innerHTML = prevElement.innerHTML;
+        anchorElement.setAttribute("target", "_blank");
+
+        prevElement.innerText = '';
+        prevElement.appendChild(anchorElement);
+    });
+}
+
 function triggerFunctions() {
     modifyCourseDivs();
     modifyInstructorDivs();
+    modifyAddressDivs();
 }
 
 
