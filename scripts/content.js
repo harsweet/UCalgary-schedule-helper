@@ -12,7 +12,7 @@ function modifyInstructorDivs() {
         }
 
         profNameList = profName.split(" ");
-        var rateMyProfURL = "https://www.ratemyprofessors.com/search/teachers?query=" + profNameList[0] + '%20' + profNameList.slice(-1);
+        var rateMyProfURL = "https://www.ratemyprofessors.com/search/professors?q=" + profNameList[0] + '%20' + profNameList.slice(-1);
         
         const anchorElement = document.createElement('a');
         anchorElement.href = rateMyProfURL;
